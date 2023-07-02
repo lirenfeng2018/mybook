@@ -1,0 +1,31 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+# 第3章 R与统计{-}
+
+You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file. 
+
+Add a numbered part: `# (PART) Act one {-}` (followed by `# A chapter`)
+
+Add an unnumbered part: `# (PART\*) Act one {-}` (followed by `# A chapter`)
+
+Add an appendix as a special kind of un-numbered part: `# (APPENDIX) Other stuff {-}` (followed by `# A chapter`). Chapters in an appendix are prepended with letters instead of numbers.
+
+## 3.1 R中的基本统计函数{-}
+```{r}
+load("C:/Users/liren/Desktop/R学习/在学/参考兽医统计教材/数据集/data_rdata/data_rdata/Data_Set_1.rdata")#加载数据
+head(data_set_1) #查看数据
+str(data_set_1) #查看数据格式
+table(data_set_1) #查看数据分布频率
+summary(data_set_1)
+```
+
+
+
+## 3.2 回归分析{-}
+
+
+
