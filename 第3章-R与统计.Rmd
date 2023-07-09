@@ -17,15 +17,42 @@ Add an appendix as a special kind of un-numbered part: `# (APPENDIX) Other stuff
 ## 3.1 R中的基本统计函数{-}
 ```{r}
 load("C:/Users/liren/Desktop/R学习/在学/参考兽医统计教材/数据集/data_rdata/data_rdata/Data_Set_1.rdata")#加载数据
-head(data_set_1) #查看数据
+head(data_set_1) #查看数据前6行
 str(data_set_1) #查看数据格式
 table(data_set_1) #查看数据分布频率
 summary(data_set_1)
 ```
+## 3.2 基本统计函数
+```{r}
+attach(data_set_1) #当采用attach()时可不用$选取变量（注意：该方法容易造成变量操作混乱，一般不建议）。
+summary(data_set_1) #summary()生成最大值、最小值、平均值、中位数、第1、3分位数等信息。另外，该函数可对矩阵、数据框、因子等多种类型的数据进行总结。
+table(data_set_1) #用table()函数创建频率表，生成每个元素（或因子）出现的频数。
+x <- table(data_set_1)
+names(x)[which(x==max(x))]#查询出现频率最高的元素
+min(data_set_1) #查看最小值
+max(data_set_1) #查看最大值
+y <- range(data_set_1) #查看最大与最小值
+diff(y) #查看最大与最小值之间的差值
+length(data_set_1)
+length(data_set_1$Threshold) #length()函数查看数据集中变量个数（数据容量）
+quantile(data_set_1$Threshold)
+quantile(data_set_1$Threshold,0.25)
+quantile(data_set_1$Threshold,0.75)
+IQR(data_set_1$Threshold) #计算四分位距（IQR），它是Q3和Q1之间的差值，即IQR = Q3 - Q1
+
+mean(Threshold) #平均值（前面需先用attach()函数加载数据）
+median(Threshold) #中位数
+var(Threshold) #求方差
+sd(Threshold) #求标准差
 
 
 
-## 3.2 回归分析{-}
+
+```
+
+
+
+## 3.3 回归分析{-}
 
 
 
