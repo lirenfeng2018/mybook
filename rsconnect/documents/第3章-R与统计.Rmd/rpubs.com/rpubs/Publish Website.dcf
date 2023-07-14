@@ -1,0 +1,11 @@
+name: Publish Website
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1061735/2c8ebedcaab44a85909eb1d66103e9bc
+bundleId: https://api.rpubs.com/api/v1/document/1061735/2c8ebedcaab44a85909eb1d66103e9bc
+url: http://rpubs.com/publish/claim/1061735/0bb6134f2b9e43849e6606077d6b58be
+when: 1689068781.71442
+lastSyncTime: 1689068781.71447

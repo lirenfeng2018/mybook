@@ -120,7 +120,7 @@
 
 \title{R语言与生物统计（畜牧兽医篇）}
 \author{李任峰}
-\date{2023-07-01}
+\date{2023-07-11}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -328,7 +328,7 @@ Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ O
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{load}\NormalTok{(}\StringTok{"C:/Users/liren/Desktop/R学习/在学/参考兽医统计教材/数据集/data\_rdata/data\_rdata/Data\_Set\_1.rdata"}\NormalTok{)}\CommentTok{\#加载数据}
-\FunctionTok{head}\NormalTok{(data\_set\_1) }\CommentTok{\#查看数据}
+\FunctionTok{head}\NormalTok{(data\_set\_1) }\CommentTok{\#查看数据前6行}
 \end{Highlighting}
 \end{Shaded}
 
@@ -394,9 +394,199 @@ Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ O
 ##  Max.   :14.900
 \end{verbatim}
 
+\hypertarget{ux57faux672cux7edfux8ba1ux51fdux6570}{%
+\section*{3.2 基本统计函数}\label{ux57faux672cux7edfux8ba1ux51fdux6570}}
+\addcontentsline{toc}{section}{3.2 基本统计函数}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{attach}\NormalTok{(data\_set\_1) }\CommentTok{\#当采用attach()时可不用$选取变量（注意：该方法容易造成变量操作混乱，一般不建议）。}
+\FunctionTok{summary}\NormalTok{(data\_set\_1) }\CommentTok{\#summary()生成最大值、最小值、平均值、中位数、第1、3分位数等信息。另外，该函数可对矩阵、数据框、因子等多种类型的数据进行总结。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Threshold     
+##  Min.   : 1.000  
+##  1st Qu.: 3.700  
+##  Median : 4.650  
+##  Mean   : 5.252  
+##  3rd Qu.: 6.100  
+##  Max.   :14.900
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(data\_set\_1) }\CommentTok{\#用table()函数创建频率表，生成每个元素（或因子）出现的频数。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Threshold
+##    1  1.1  1.4  1.5  1.7  1.9    2  2.1  2.2  2.3  2.4  2.5  2.6  2.7  2.8  2.9 
+##    2    1    3    1    1    1    1    8    3    4    4    4    5    5    7    3 
+##    3  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9    4  4.1  4.2  4.3  4.4  4.5 
+##    4   10   12    5    9   14   10    9   10    5    7   19   17   14    8   15 
+##  4.6  4.7  4.8  4.9    5  5.1  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9    6  6.1 
+##   14   14   18   11    8    9    9    5    8    5    6    6    5    8    4    3 
+##  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9    7  7.1  7.2  7.4  7.5  7.6  7.7  7.8 
+##    2    4    5    5    1    4    6    3    2    3    1    3    2    3    1    3 
+##  7.9    8  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9    9  9.1  9.2  9.3  9.4 
+##    3    2    1    2    1    2    3    1    1    1    3    1    1    1    3    2 
+##  9.5  9.6  9.7  9.8  9.9   10 10.2 10.3 10.4 10.5 10.7 10.8 10.9   11 11.3 11.5 
+##    3    3    2    2    1    3    2    1    1    2    2    1    2    1    1    1 
+## 11.8   12 12.3 12.4 12.6 12.8 12.9 13.4 13.8   14 14.5 14.9 
+##    1    1    1    1    1    1    1    1    1    1    1    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(data\_set\_1)}
+\FunctionTok{names}\NormalTok{(x)[}\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{==}\FunctionTok{max}\NormalTok{(x))]}\CommentTok{\#查询出现频率最高的元素}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "4.1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(data\_set\_1) }\CommentTok{\#查看最小值}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(data\_set\_1) }\CommentTok{\#查看最大值}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 14.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{range}\NormalTok{(data\_set\_1) }\CommentTok{\#查看最大与最小值}
+\FunctionTok{diff}\NormalTok{(y) }\CommentTok{\#查看最大与最小值之间的差值}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(data\_set\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(data\_set\_1}\SpecialCharTok{$}\NormalTok{Threshold) }\CommentTok{\#length()函数查看数据集中变量个数（数据容量）}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 470
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(data\_set\_1}\SpecialCharTok{$}\NormalTok{Threshold)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    0%   25%   50%   75%  100% 
+##  1.00  3.70  4.65  6.10 14.90
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(data\_set\_1}\SpecialCharTok{$}\NormalTok{Threshold,}\FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 
+## 3.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(data\_set\_1}\SpecialCharTok{$}\NormalTok{Threshold,}\FloatTok{0.75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 75% 
+## 6.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{IQR}\NormalTok{(data\_set\_1}\SpecialCharTok{$}\NormalTok{Threshold) }\CommentTok{\#计算四分位距（IQR），它是Q3和Q1之间的差值，即IQR = Q3 {-} Q1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(Threshold) }\CommentTok{\#平均值（前面需先用attach()函数加载数据）}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.251702
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(Threshold) }\CommentTok{\#中位数}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.65
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(Threshold) }\CommentTok{\#求方差}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.959731
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(Threshold) }\CommentTok{\#求标准差}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.441256
+\end{verbatim}
+
 \hypertarget{ux56deux5f52ux5206ux6790}{%
-\section*{3.2 回归分析}\label{ux56deux5f52ux5206ux6790}}
-\addcontentsline{toc}{section}{3.2 回归分析}
+\section*{3.3 回归分析}\label{ux56deux5f52ux5206ux6790}}
+\addcontentsline{toc}{section}{3.3 回归分析}
 
 \hypertarget{ux7b2c4ux7ae0-rux8bedux8a00ux7ed8ux56fe}{%
 \chapter*{第4章 R语言绘图}\label{ux7b2c4ux7ae0-rux8bedux8a00ux7ed8ux56fe}}

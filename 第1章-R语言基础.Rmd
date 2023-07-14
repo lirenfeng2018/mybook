@@ -1,14 +1,14 @@
 ---
 output:
-  pdf_document:
+  html_document:
     toc: yes
   word_document:
-    toc: yes
-  html_document:
     toc: yes
   rticles::ctex:
     fig_caption: yes
     number_sections: yes
+    toc: yes
+  pdf_document:
     toc: yes
 ---
 

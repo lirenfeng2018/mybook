@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 # 第3章 R与统计{-}
@@ -22,7 +22,7 @@ str(data_set_1) #查看数据格式
 table(data_set_1) #查看数据分布频率
 summary(data_set_1)
 ```
-## 3.2 基本统计函数
+## 3.2 基本统计函数{-}
 ```{r}
 attach(data_set_1) #当采用attach()时可不用$选取变量（注意：该方法容易造成变量操作混乱，一般不建议）。
 summary(data_set_1) #summary()生成最大值、最小值、平均值、中位数、第1、3分位数等信息。另外，该函数可对矩阵、数据框、因子等多种类型的数据进行总结。
@@ -40,10 +40,14 @@ quantile(data_set_1$Threshold,0.25)
 quantile(data_set_1$Threshold,0.75)
 IQR(data_set_1$Threshold) #计算四分位距（IQR），它是Q3和Q1之间的差值，即IQR = Q3 - Q1
 
-mean(Threshold) #平均值（前面需先用attach()函数加载数据）
-median(Threshold) #中位数
-var(Threshold) #求方差
-sd(Threshold) #求标准差
+mean(data_set_1$Threshold) #平均值（前面需先用attach()函数加载数据）
+median(data_set_1$Threshold) #中位数
+var(data_set_1$Threshold) #求方差
+sd(data_set_1$Threshold) #求标准差
+shapiro.test(data_set_1$Threshold)
+#检测数据是否服从正态分布
+scale(data_set_1$Threshold) #数据归一化（注意和数据标准化的区别）
+
 
 
 
